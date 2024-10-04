@@ -11,16 +11,13 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Table
 public class Points {
-
     @Id
     @Column(nullable = false)
     private long userId;
-
     @Column(nullable = false)
     private String username;
     @Column(nullable = false)
     private long pointsBalance;
     @Column
     private long pointsStart;
-
 }
