@@ -80,11 +80,11 @@ public class MessageCreateEventServiceImpl implements EventListener<MessageCreat
             }
             if (pointsToGift<0){
                 return message.getChannel()
-                        .flatMap(channel -> channel.createMessage("Айяй воровать не хорошо"));
+                        .flatMap(channel -> channel.createMessage("Нельзя отправлять отрицательные числа"));
             }
             if (pointsFrom.getUsername().equals(pointsTo.getUsername())){
                 return message.getChannel()
-                        .flatMap(channel -> channel.createMessage("Самоотсос запрещен, вац"));
+                        .flatMap(channel -> channel.createMessage("Нельзя самому себе отправлять"));
             }
             pointsFrom.setPointsBalance(pointsFrom.getPointsBalance()-pointsToGift);
             pointsTo.setPointsBalance(pointsTo.getPointsBalance()+pointsToGift);
@@ -102,13 +102,7 @@ public class MessageCreateEventServiceImpl implements EventListener<MessageCreat
         }
         if(message.getContent().equalsIgnoreCase("!курица")){
             return message.getChannel()
-                    .flatMap(channel -> channel.createMessage("\nКурица 2.0\n\nВы хотели баллы и вы их получили суки.\n\n" +
-                            "Как происходит накопление баллов?\n"+
-                            "Каждую секунду пока вы находитесь на одном из голосовых чатов в шизухе, происходит накопление баллов по принципу: 1 секунда - 1 балл. (Фиксация высиженных баллов происходит после того как ливнул с канала)\n\n"+
-                            "Команды которые есть сейчас:\n"+
-                            " * /balance - проверка текущего баланса\n" +
-                            " * /gift ИмяПользователя Сумма - отправка баллов с одного акка на другой\n" +
-                            " * /top - вывод топа по баллам"));
+                    .flatMap(channel -> channel.createMessage("*Описание команд*"));
         }
         return handleError();
     }
